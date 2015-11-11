@@ -90,19 +90,34 @@ exports.arraysAnswers = {
   },
 
   duplicates : function(arr) {
-    var sameItems = 0;
-    arr.forEach(function(currVal) {
-      if(currVal === item) {
-        sameItems++;
-      }
-    });
+    var results = [];
+    for (var i = 0, len = arr.length - 1; i < len; i++) {
+      if((results.indexOf(arr[i]) === -1) && (arr.indexOf(arr[i], i + 1) !== -1)) {
+        results.push(arr[i]);
+        }
+        }
+        console.log(results);
+        return results;
   },
+  // Thanks to Mike DeSimone
+  // http://stackoverflow.com/questions/8314297/best-way-to-return-duplicate-elements-in-an-array
 
   square : function(arr) {
-
+    return arr.map(function (x) {
+      return Math.pow(x, 2);
+  });
   },
+  // Thanks to 1ace
+  // http://stackoverflow.com/questions/19645186/square-each-number-in-an-array-in-javascript
 
   findAllOccurrences : function(arr, target) {
-
+    var foundOccurences = [];
+	      arr.forEach(function(currVal, elm) {
+	        if(currVal === target){
+	          foundOccurences.push(elm);
+	        }
+	      });
+        console.log(foundOccurences);
+	      return foundOccurences;
   }
 };
